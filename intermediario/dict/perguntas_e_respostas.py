@@ -6,8 +6,7 @@ def imprimir_opcoes(posicao):
 
 def verificar_resposta_usuario(posicao, resposta):
     for indice, opcao in enumerate(perguntas[posicao]['Opções']):
-        if int(resposta) == indice :
-            print("Resposta correta!!")
+        if perguntas[posicao]['Opções'][resposta] == perguntas[posicao]['Resposta']:
             return True
 
 perguntas = [
@@ -31,13 +30,34 @@ perguntas = [
 continuar = True
 range = 0
 
+
 while continuar == True:
+
+    opcoes = perguntas[range]['Opções']
+    qtd_opcoes = len(opcoes)
 
     imprimir_opcoes(range)
     resposta_usuario = input("Digite o indice da opção correta: ")
+
+    if resposta_usuario.isdigit():
+        resposta_usuario = int(resposta_usuario)
+
+        if resposta_usuario < 0 or resposta_usuario > qtd_opcoes:
+            print('')
+            print('Índice inválido, digite um indice mostrado')
+            print('')
+            continue
+    else:
+        print('')
+        print('Digite um numero inteiro')
+        print('')
+        continue
+
     resposta_verificada = verificar_resposta_usuario(range, resposta_usuario)
 
     if resposta_verificada == True:
+        print("Resposta correta!!")
+        print('')
         range += 1
 
         if range == len(perguntas):
@@ -45,7 +65,9 @@ while continuar == True:
         continue
     else:
         print("Resposta errada, tente novamente!")
+        print('')
         continue
 
 print("Muito bem, ate mais")
+print('')
     
