@@ -12,7 +12,7 @@ def verifica_paridade(num):
     return "impar"
 
 
-num = multiplicacao(1,2,3,4,5,6)
+num = multiplicacao(1,2,3,4,5)
 print(num)
 print(verifica_paridade(num))
     
