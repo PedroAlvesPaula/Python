@@ -1,6 +1,6 @@
 import json
 
-FILE_PATH = './/data_car.json'
+FILE_PATH = 'data_car.json'
 
 class car:
     def __init__(self, name, model, color, motor) -> None:
@@ -10,10 +10,11 @@ class car:
         self.motor = motor
 
 def save_in_json(file_data):
-    with open(FILE_PATH, 'w') as file:
-        json.dump(file_data, file, indent=2)
+    if __name__ == "main":
+        with open(FILE_PATH, 'w') as file:
+            json.dump(file_data, file, indent=2)
 
-corsa = car('Argo', 'fire', 'Black', 'motor ap 1000')
+corsa = car('Argo', 'Gay', 'Black', 'motor ap 1000')
 
 corsa_data = corsa.__dict__
 try:
